@@ -170,11 +170,11 @@ class ZooControllerTest {
         // 3. Expect status 404 (Not Found)
         
         // Your code here:
-        // doThrow(new IllegalArgumentException("Zoo not found with id: 999"))
-        //         .when(zooService).deleteZoo(999L);
-        //
-        // mockMvc.perform(delete("/api/zoos/999"))
-        //         .andExpect(status().isNotFound());
+         doThrow(new IllegalArgumentException("Zoo not found with id: 999"))
+                 .when(zooService).deleteZoo(999L);
+
+         mockMvc.perform(delete("/api/zoos/999"))
+                 .andExpect(status().isNotFound());
     }
 
     @Test

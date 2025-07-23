@@ -112,17 +112,17 @@ class ZooControllerTest {
         // 6. Expect the response to contain the updated name
         
         // Your code here:
-        // manilaZoo.setId(1L);
-        // Zoo updatedZoo = new Zoo("Updated Manila Zoo", "Updated Location", "Updated description");
-        // updatedZoo.setId(1L);
-        //
-        // when(zooService.updateZoo(eq(1L), any(Zoo.class))).thenReturn(updatedZoo);
-        //
-        // mockMvc.perform(put("/api/zoos/1")
-        //         .contentType(MediaType.APPLICATION_JSON)
-        //         .content(objectMapper.writeValueAsString(updatedZoo)))
-        //         .andExpect(status().isOk())
-        //         .andExpect(jsonPath("$.name").value("Updated Manila Zoo"));
+         manilaZoo.setId(1L);
+         Zoo updatedZoo = new Zoo("Updated Manila Zoo", "Updated Location", "Updated description");
+         updatedZoo.setId(1L);
+
+         when(zooService.updateZoo(eq(1L), any(Zoo.class))).thenReturn(updatedZoo);
+
+         mockMvc.perform(put("/api/zoos/1")
+                 .contentType(MediaType.APPLICATION_JSON)
+                 .content(objectMapper.writeValueAsString(updatedZoo)))
+                 .andExpect(status().isOk())
+                 .andExpect(jsonPath("$.name").value("Updated Manila Zoo"));
     }
 
     @Test

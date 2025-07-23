@@ -155,10 +155,10 @@ class ZooControllerTest {
         // 3. Expect status 204 (No Content)
         
         // Your code here:
-        // doNothing().when(zooService).deleteZoo(1L);
-        //
-        // mockMvc.perform(delete("/api/zoos/1"))
-        //         .andExpect(status().isNoContent());
+         doNothing().when(zooService).deleteZoo(1L);
+
+         mockMvc.perform(delete("/api/zoos/1"))
+                 .andExpect(status().isNoContent());
     }
 
     @Test

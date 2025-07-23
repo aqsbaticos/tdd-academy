@@ -111,17 +111,17 @@ class ZooServiceTest {
         // 7. Verify that zooRepository.save was called once
         
         // Your code here:
-        // Long zooId = 1L;
-        // manilaZoo.setId(zooId);
-        // Zoo updatedZoo = new Zoo("Updated Manila Zoo", "Updated Location", "Updated description");
-        //
-        // when(zooRepository.findById(zooId)).thenReturn(Optional.of(manilaZoo));
-        // when(zooRepository.save(any(Zoo.class))).thenReturn(updatedZoo);
-        //
-        // Zoo result = zooService.updateZoo(zooId, updatedZoo);
-        //
-        // assertEquals("Updated Manila Zoo", result.getName());
-        // verify(zooRepository, times(1)).save(any(Zoo.class));
+         Long zooId = 1L;
+         manilaZoo.setId(zooId);
+         Zoo updatedZoo = new Zoo("Updated Manila Zoo", "Updated Location", "Updated description");
+
+         when(zooRepository.findById(zooId)).thenReturn(Optional.of(manilaZoo));
+         when(zooRepository.save(any(Zoo.class))).thenReturn(updatedZoo);
+
+         Zoo result = zooService.updateZoo(zooId, updatedZoo);
+
+         assertEquals("Updated Manila Zoo", result.getName());
+         verify(zooRepository, times(1)).save(any(Zoo.class));
     }
 
     @Test

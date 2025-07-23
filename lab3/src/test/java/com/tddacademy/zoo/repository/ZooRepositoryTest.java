@@ -126,11 +126,11 @@ class ZooRepositoryTest {
         // 6. Assert that the zoo does not exist
         
         // Your code here:
-        // Zoo savedZoo = zooRepository.save(manilaZoo);
-        // Long savedId = savedZoo.getId();
-        //
-        // assertTrue(zooRepository.existsById(savedId));
-        // assertFalse(zooRepository.existsById(999L));
+         Zoo savedZoo = zooRepository.save(manilaZoo);
+         Long savedId = savedZoo.getId();
+
+         assertTrue(zooRepository.existsById(savedId));
+         assertFalse(zooRepository.existsById(999L));
     }
 
     @Test

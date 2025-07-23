@@ -155,12 +155,12 @@ class ZooServiceTest {
         // 3. Verify that zooRepository.deleteById(1L) was called once
         
         // Your code here:
-        // Long zooId = 1L;
-        // when(zooRepository.existsById(zooId)).thenReturn(true);
-        //
-        // zooService.deleteZoo(zooId);
-        //
-        // verify(zooRepository, times(1)).deleteById(zooId);
+         Long zooId = 1L;
+         when(zooRepository.existsById(zooId)).thenReturn(true);
+
+         zooService.deleteZoo(zooId);
+
+         verify(zooRepository, times(1)).deleteById(zooId);
     }
 
     @Test

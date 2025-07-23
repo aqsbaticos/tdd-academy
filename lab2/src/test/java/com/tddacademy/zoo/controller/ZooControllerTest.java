@@ -90,11 +90,14 @@ class ZooControllerTest {
         //    - jsonPath("$.description").value("A beautiful zoo in the heart of Manila")
         
         // Your code here:
-        // when(zooService.getZooById(1L)).thenReturn(createdZoo);
-        // mockMvc.perform(get("/api/zoos/1"))
-        //     .andExpect(...)
-        //     .andExpect(...)
-        //     .andExpect(...);
+         when(zooService.getZooById(1L)).thenReturn(createdZoo);
+         mockMvc.perform(get("/api/zoos/1"))
+             .andExpect(status().isOk())
+             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+             .andExpect(jsonPath("$.id").value(1))
+             .andExpect(jsonPath("$.name").value("Manila Zoo"))
+             .andExpect(jsonPath("$.location").value("Manila, Philippines"))
+             .andExpect(jsonPath("$.description").value("A beautiful zoo in the heart of Manila"));
     }
 
     @Test
@@ -142,14 +145,17 @@ class ZooControllerTest {
         //    - jsonPath("$.description").value("Updated description")
         
         // Your code here:
-        // Zoo updatedZoo = new Zoo(1L, "Updated Zoo Name", "Updated Location", "Updated description", new ArrayList<>(), new ArrayList<>());
-        // when(zooService.updateZoo(eq(1L), any(Zoo.class))).thenReturn(updatedZoo);
-        // mockMvc.perform(put("/api/zoos/1")
-        //         .contentType(MediaType.APPLICATION_JSON)
-        //         .content(objectMapper.writeValueAsString(testZoo)))
-        //     .andExpect(...)
-        //     .andExpect(...)
-        //     .andExpect(...);
+         Zoo updatedZoo = new Zoo(1L, "Updated Zoo Name", "Updated Location", "Updated description", new ArrayList<>(), new ArrayList<>());
+         when(zooService.updateZoo(eq(1L), any(Zoo.class))).thenReturn(updatedZoo);
+         mockMvc.perform(put("/api/zoos/1")
+                 .contentType(MediaType.APPLICATION_JSON)
+                 .content(objectMapper.writeValueAsString(testZoo)))
+             .andExpect(status().isOk())
+             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+             .andExpect(jsonPath("$.id").value(1))
+             .andExpect(jsonPath("$.name").value("Updated Zoo Name"))
+             .andExpect(jsonPath("$.location").value("Updated Location"))
+             .andExpect(jsonPath("$.description").value("Updated description"));
     }
 
     @Test
@@ -161,11 +167,11 @@ class ZooControllerTest {
         // 3. Add expectation for status().isNotFound()
         
         // Your code here:
-        // when(zooService.updateZoo(eq(999L), any(Zoo.class))).thenThrow(new IllegalArgumentException("Zoo not found with id: 999"));
-        // mockMvc.perform(put("/api/zoos/999")
-        //         .contentType(MediaType.APPLICATION_JSON)
-        //         .content(objectMapper.writeValueAsString(testZoo)))
-        //     .andExpect(...);
+         when(zooService.updateZoo(eq(999L), any(Zoo.class))).thenThrow(new IllegalArgumentException("Zoo not found with id: 999"));
+         mockMvc.perform(put("/api/zoos/999")
+                 .contentType(MediaType.APPLICATION_JSON)
+                 .content(objectMapper.writeValueAsString(testZoo)))
+             .andExpect(status().isNotFound());
     }
 
     @Test
@@ -177,9 +183,9 @@ class ZooControllerTest {
         // 3. Add expectation for status().isNoContent()
         
         // Your code here:
-        // doNothing().when(zooService).deleteZoo(1L);
-        // mockMvc.perform(delete("/api/zoos/1"))
-        //     .andExpect(...);
+         doNothing().when(zooService).deleteZoo(1L);
+         mockMvc.perform(delete("/api/zoos/1"))
+             .andExpect(status().isNoContent());
     }
 
     @Test
@@ -191,9 +197,9 @@ class ZooControllerTest {
         // 3. Add expectation for status().isNotFound()
         
         // Your code here:
-        // doThrow(new IllegalArgumentException("Zoo not found with id: 999")).when(zooService).deleteZoo(999L);
-        // mockMvc.perform(delete("/api/zoos/999"))
-        //     .andExpect(...);
+         doThrow(new IllegalArgumentException("Zoo not found with id: 999")).when(zooService).deleteZoo(999L);
+         mockMvc.perform(delete("/api/zoos/999"))
+             .andExpect(status().isNotFound());
     }
 
     @Test
@@ -214,10 +220,10 @@ class ZooControllerTest {
         // 2. Add expectation for status().isBadRequest()
         
         // Your code here:
-        // mockMvc.perform(put("/api/zoos/1")
-        //         .contentType(MediaType.APPLICATION_JSON)
-        //         .content("{ invalid json }"))
-        //     .andExpect(...);
+         mockMvc.perform(put("/api/zoos/1")
+                 .contentType(MediaType.APPLICATION_JSON)
+                 .content("{ invalid json }"))
+             .andExpect(status().isBadRequest());
     }
 
     @Test

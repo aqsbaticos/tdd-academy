@@ -104,14 +104,14 @@ class ZooRepositoryTest {
         // 4. Assert that the result size is 2
         
         // Your code here:
-        // zooRepository.save(manilaZoo);
-        // zooRepository.save(cebuSafari);
-        //
-        // List<Zoo> philippineZoos = zooRepository.findByLocationContainingIgnoreCase("Philippines");
-        //
-        // assertEquals(2, philippineZoos.size());
-        // assertTrue(philippineZoos.stream().anyMatch(zoo -> zoo.getName().equals("Manila Zoo")));
-        // assertTrue(philippineZoos.stream().anyMatch(zoo -> zoo.getName().equals("Cebu Safari")));
+         zooRepository.save(manilaZoo);
+         zooRepository.save(cebuSafari);
+
+         List<Zoo> philippineZoos = zooRepository.findByLocationContainingIgnoreCase("Philippines");
+
+         assertEquals(2, philippineZoos.size());
+         assertTrue(philippineZoos.stream().anyMatch(zoo -> zoo.getName().equals("Manila Zoo")));
+         assertTrue(philippineZoos.stream().anyMatch(zoo -> zoo.getName().equals("Cebu Safari")));
     }
 
     @Test

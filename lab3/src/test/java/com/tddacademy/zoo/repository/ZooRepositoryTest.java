@@ -144,12 +144,12 @@ class ZooRepositoryTest {
         // 5. Assert that the zoo is not found (Optional.empty())
         
         // Your code here:
-        // Zoo savedZoo = zooRepository.save(manilaZoo);
-        // Long savedId = savedZoo.getId();
-        //
-        // zooRepository.deleteById(savedId);
-        // Optional<Zoo> deletedZoo = zooRepository.findById(savedId);
-        //
-        // assertTrue(deletedZoo.isEmpty());
+         Zoo savedZoo = zooRepository.save(manilaZoo);
+         Long savedId = savedZoo.getId();
+
+         zooRepository.deleteById(savedId);
+         Optional<Zoo> deletedZoo = zooRepository.findById(savedId);
+
+         assertTrue(deletedZoo.isEmpty());
     }
 } 

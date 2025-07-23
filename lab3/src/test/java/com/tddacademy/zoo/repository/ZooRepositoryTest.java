@@ -85,13 +85,13 @@ class ZooRepositoryTest {
         // 4. Assert that the result size is 1
         
         // Your code here:
-        // zooRepository.save(manilaZoo);
-        // zooRepository.save(cebuSafari);
-        //
-        // List<Zoo> manilaZoos = zooRepository.findByNameContainingIgnoreCase("Manila");
-        //
-        // assertEquals(1, manilaZoos.size());
-        // assertEquals("Manila Zoo", manilaZoos.get(0).getName());
+         zooRepository.save(manilaZoo);
+         zooRepository.save(cebuSafari);
+
+         List<Zoo> manilaZoos = zooRepository.findByNameContainingIgnoreCase("Manila");
+
+         assertEquals(1, manilaZoos.size());
+         assertEquals("Manila Zoo", manilaZoos.get(0).getName());
     }
 
     @Test

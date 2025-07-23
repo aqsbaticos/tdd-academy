@@ -134,16 +134,16 @@ class ZooServiceTest {
         // 4. Verify the exception message contains "Zoo not found with id: 999"
         
         // Your code here:
-        // Long zooId = 999L;
-        // Zoo updatedZoo = new Zoo("Updated Zoo", "Updated Location", "Updated description");
-        //
-        // when(zooRepository.findById(zooId)).thenReturn(Optional.empty());
-        //
-        // IllegalArgumentException exception = assertThrows(
-        //     IllegalArgumentException.class,
-        //     () -> zooService.updateZoo(zooId, updatedZoo)
-        // );
-        // assertTrue(exception.getMessage().contains("Zoo not found with id: 999"));
+         Long zooId = 999L;
+         Zoo updatedZoo = new Zoo("Updated Zoo", "Updated Location", "Updated description");
+
+         when(zooRepository.findById(zooId)).thenReturn(Optional.empty());
+
+         IllegalArgumentException exception = assertThrows(
+             IllegalArgumentException.class,
+             () -> zooService.updateZoo(zooId, updatedZoo)
+         );
+         assertTrue(exception.getMessage().contains("Zoo not found with id: 999"));
     }
 
     @Test
